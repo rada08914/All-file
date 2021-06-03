@@ -1,0 +1,99 @@
+    {{-- <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['0']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['1']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['2']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['3']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['4']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['5']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['6']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['7']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['8']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['9']}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                      <small class="card-title">order_date</small>
+                      <p class="card-text">{{$data['order_date']['10']}}</p>
+                      
+                    </div>
+                </div>
+            </div> --}}

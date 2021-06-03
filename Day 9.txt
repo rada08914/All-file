@@ -1,0 +1,107 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DepartmentController;
+
+
+Route::get('/department',[
+    App\Http\Controllers\DepartmentController::class,
+    'department'
+
+])->name('home');;
+Route::post('/department/save',[
+    App\Http\Controllers\DepartmentController::class,
+    'save'
+])->name('save');
+
+________________________________________________________
+
+<?php
+
+namespace App\Http\Controllers;
+use Redirect;
+use App\Models\Department;
+use Illuminate\Http\Request;
+
+class DepartmentController extends Controller
+{
+    protected $request;
+
+    public function __construct(Request $request){
+
+        $this->request = $request;
+    }
+
+    public function department(){
+
+         return view('department')->with([
+            'data' => Department::all()
+        ]);
+    }
+    public function save(){
+
+        Department::create(
+            $this->request->except('_token')
+        );
+        return Redirect::route('home');
+    }
+}
+________________________________________________
+
+
+<form action="{{URL::route('save')}}" method="post">
+    @csrf
+<input type="text" name="name" required>
+
+<select name="status" id="status" required>
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+</select>
+<button >Save</button>
+</form>
+<hr>
+<ul>
+    @foreach ($data as $d)
+
+    <li>{{$d->name}}</li>
+     <small>
+        <li>{{$d->status}}</li>
+    </small>
+    @endforeach
+</ul>
+____________________________________________________
+
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Department extends Model
+{
+    use HasFactory,SoftDeletes;
+    protected $table ='departments';
+    protected $fillable =[
+        'name',
+        'status',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+    
+}
+
+
+___________________________________________________
+
+
+
+ Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->enum('status',['Active','Inactive']);
+            $table->softDeletes();
+            $table->timestamps();
+        });

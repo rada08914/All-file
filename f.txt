@@ -1,0 +1,203 @@
+Day 1
+composer create-project --prefer-dist laravel/laravel relationship
+
+the installation is the name of your project
+
+
+go to your file
+cd Desktop
+cd Rada
+cd Day 2
+
+
+open your vscode
+
+to open your terminal
+Ctrl J
+
+php atisan serve
+
+php artisan make:controller HomeController
+
+go to your web.php 
+
+Route::get('/home',[
+    App\Http\Controllers\HomeController::class,
+    'index'
+
+]);
+
+go to your HomeController
+class HomeController extends Controller
+{
+    public function index(){
+        return vewi('home');
+    }
+    
+}
+
+the name of the blade is home.blade.php
+
+ $table->id();
+            $table->string('title');
+            $table->unsignedBigInteger('genre_id')->index();
+            $table->unsignedBigInteger('artist_id')->index();
+            $table->unsignedBigInteger('album_id')->index(); 
+            $table->timestamps();
+
+            $table->foreign('album_id')->references('id')->on('album');
+            $table->foreign('artist_id')->references('id')->on('artist');
+            $table->foreign('genre_id')->references('id')->on('genre');
+
+
+   $data = DB::table('song')
+    ->join('album','album.id','song.album_id')
+    ->join('artist','artist.id','song.artist_id')
+    ->join('genre','genre.id','song.genre_id')
+    ->select(
+        'title',
+        'album_name',
+        'artist_name',
+        'genre_name'
+    )->get();
+    return response()->json($data);
+
+
+https://xsodia.space/payroll/dashboard
+https://xsodia.space/mdsj-school-system/teachers
+
+Day 6 Git 
+
+rm -rf .git
+git init
+git remote add origin https://github.com/army-isdt-batch-2/rada.git
+git remote -v
+git add .
+git commit -m "any comment here"
+
+
+
+
+
+Day 7 Seeder
+
+php artisan make:seeder AdminAccountSeeder
+
+use DB, Carbon;
+   DB::table('users')->insert([
+            
+                'name'=>'Super Admin',
+                'username'=>'admin',
+                'password'=>bcrypt('123'),
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at'=> Carbon\Carbon::now()
+            
+
+        ]);
+php artisan db:seed --class=AdminAccountSeeder
+
+
+
+
+Day 8 
+ protected $request;
+
+    public function __construct(Request $request){
+
+        $this->request = $request;
+    }
+
+    public function create(){
+        return view('create');
+    }
+    public function save(){
+       
+        dd(
+            $this->request->all()
+          );
+
+    }
+
+
+php artisan make:model Personel
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Personel extends Model
+{
+    use HasFactory,SoftDeletes;
+
+    protected $table="personel";
+
+    protected $fillable=[
+        'first_name',
+        'last_name',
+        'middle_name',
+        'age',
+        'gender',
+        'birthday',
+        'contact',
+        'address',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+
+    ];
+}
+
+create file folder under routes folder name the folder modules 
+
+create all module file sample department.php
+
+paste this code
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+//add all the route of the department
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/department',[
+    App\Http\Controllers\DepartmentController::class,
+    'department'
+])->name('department');
+Route::get('/form',[
+    App\Http\Controllers\DepartmentController::class,
+    'form'
+])->name('form');
+Route::get('/department/create',[
+    App\Http\Controllers\DepartmentController::class,
+    'departmentCreate'
+])->name('department.create');
+Route::post('/department/save',[
+    App\Http\Controllers\DepartmentController::class,
+    'departmentSave'
+])->name('department.create.save');
+
+
+
+
+In the route web.php
+
+this the only code to call all the routes in diff modules under the routes->modules
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+foreach (glob(__DIR__ . '/modules/*.php') as $filename) {
+    include $filename;
+}
+
+
+{{ URL::route('department.create.save')}}
